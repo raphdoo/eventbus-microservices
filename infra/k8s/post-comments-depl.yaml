@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-comments-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: post-comments
+  template:
+    metadata:
+      labels:
+        app: post-comments
+    spec:
+      containers:
+        - name: post-comments
+          image: raph0/post-comments
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: post-comments-srv
+spec:
+  selector:
+    app: post-comments
+  ports:
+  - name: post-comments
+    protocol: TCP
+    port: 4001
+    targetPort: 4001
