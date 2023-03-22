@@ -13,8 +13,8 @@ spec:
         app: post-comments
     spec:
       containers:
-        - name: post-comments
-          image: raph0/post-comments
+        - name: comments
+          image: raph0/comments
 ---
 apiVersion: v1
 kind: Service
